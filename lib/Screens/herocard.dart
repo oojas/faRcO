@@ -1,7 +1,6 @@
 import 'package:animated_text/animated_text.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'Borrower.dart';
 
 class hero extends StatelessWidget {
   @override
@@ -15,12 +14,7 @@ class hero extends StatelessWidget {
             Stack(
               children: [
                 InkWell(
-                  onTap: () {
-                    Navigator.push(
-                        context,
-                        PageRouteBuilder(
-                            pageBuilder: (context, a, b) => bro()));
-                  },
+                  onTap: () {},
                   child: Align(
                     alignment: Alignment.bottomRight,
                     child: ClipPath(
@@ -72,12 +66,7 @@ class hero extends StatelessWidget {
             Stack(
               children: [
                 InkWell(
-                  onTap: () {
-                    Navigator.push(
-                        context,
-                        PageRouteBuilder(
-                            pageBuilder: (context, a, b) => bro1()));
-                  },
+                  onTap: () {},
                   child: Align(
                     alignment: Alignment.bottomCenter,
                     child: ClipPath(
@@ -168,12 +157,7 @@ class hero1 extends StatelessWidget {
             Stack(
               children: [
                 InkWell(
-                  onTap: () {
-                    Navigator.push(
-                        context,
-                        PageRouteBuilder(
-                            pageBuilder: (context, a, b) => bro()));
-                  },
+                  onTap: () {},
                   child: Align(
                     alignment: Alignment.bottomRight,
                     child: ClipPath(
@@ -225,12 +209,7 @@ class hero1 extends StatelessWidget {
             Stack(
               children: [
                 InkWell(
-                  onTap: () {
-                    Navigator.push(
-                        context,
-                        PageRouteBuilder(
-                            pageBuilder: (context, a, b) => bro1()));
-                  },
+                  onTap: () {},
                   child: Align(
                     alignment: Alignment.bottomCenter,
                     child: ClipPath(
