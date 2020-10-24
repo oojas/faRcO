@@ -41,7 +41,7 @@ class _UIAnimState extends State<UIAnim> with SingleTickerProviderStateMixin {
               ),
             ),
             body: Container(
-                margin: EdgeInsets.only(top: 40),
+                margin: EdgeInsets.only(top: 5),
                 width: MediaQuery.of(context).size.width,
                 height: MediaQuery.of(context).size.height,
                 alignment: Alignment.topCenter,
@@ -64,7 +64,7 @@ class _UIAnimState extends State<UIAnim> with SingleTickerProviderStateMixin {
                       ),
                       alignment: Alignment.centerLeft,
                       width: 390,
-                      height: 90,
+                      height: 60,
                       decoration: BoxDecoration(
                           shape: BoxShape.rectangle,
                           boxShadow: [
@@ -182,14 +182,14 @@ class _UIAnimState extends State<UIAnim> with SingleTickerProviderStateMixin {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Icon(
-                                Icons.card_giftcard_sharp,
+                                Icons.speaker_notes,
                                 size: 30,
                               ),
                               SizedBox(
                                 height: 10,
                               ),
                               Text(
-                                'Flash Cards',
+                                'Speaking',
                                 style: TextStyle(
                                     fontSize: 15,
                                     fontWeight: FontWeight.bold,
@@ -209,14 +209,14 @@ class _UIAnimState extends State<UIAnim> with SingleTickerProviderStateMixin {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Icon(
-                                Icons.book,
+                                Icons.fiber_new_sharp,
                                 size: 30,
                               ),
                               SizedBox(
                                 height: 10,
                               ),
                               Text(
-                                'Writing',
+                                'Matching',
                                 style: TextStyle(
                                     fontSize: 15,
                                     fontWeight: FontWeight.bold,
@@ -236,14 +236,14 @@ class _UIAnimState extends State<UIAnim> with SingleTickerProviderStateMixin {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Icon(
-                                Icons.speaker,
+                                Icons.file_copy,
                                 size: 30,
                               ),
                               SizedBox(
                                 height: 10,
                               ),
                               Text(
-                                'Listening',
+                                'Test',
                                 style: TextStyle(
                                     fontSize: 15,
                                     fontWeight: FontWeight.bold,
@@ -253,6 +253,68 @@ class _UIAnimState extends State<UIAnim> with SingleTickerProviderStateMixin {
                           ),
                         ),
                       ],
+                    ),
+                    SizedBox(
+                      height: 30,
+                    ),
+                    Column(
+                      children: [
+                        Container(
+                          width: 390,
+                          height: 110,
+                          decoration: BoxDecoration(
+                              gradient: LinearGradient(colors: [
+                                Colors.blue.shade200,
+                                Colors.pink.shade200
+                              ]),
+                              borderRadius: BorderRadius.circular(12)),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.only(left: 15.0),
+                                child: Text(
+                                  'Keep Improving !',
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 25,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                              ),
+                              SizedBox(
+                                height: 10,
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(left: 19.0),
+                                child: Text(
+                                  'Your current score',
+                                  style: TextStyle(
+                                      fontSize: 15,
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Container(
+                      alignment: Alignment.centerLeft,
+                      child: Padding(
+                        padding: const EdgeInsets.only(left: 13.0),
+                        child: Text(
+                          'Overview',
+                          style: TextStyle(
+                              fontSize: 30,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.black87),
+                        ),
+                      ),
                     ),
                   ],
                 )));
