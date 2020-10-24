@@ -25,7 +25,13 @@ class _UIAnimState extends State<UIAnim> with SingleTickerProviderStateMixin {
     return AnimatedBuilder(
       animation: _controller,
       builder: (BuildContext context, Widget child) {
-        return Scaffold();
+        return Scaffold(
+          appBar: AppBar(
+            title: Text('Unit 3'),
+            centerTitle: true,
+            leading: Icon(Icons.arrow_back),
+          ),
+        );
       },
     );
   }
