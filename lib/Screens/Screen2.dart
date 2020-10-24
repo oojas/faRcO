@@ -7,7 +7,15 @@ class UIAnim extends StatefulWidget {
 
 class _UIAnimState extends State<UIAnim> with SingleTickerProviderStateMixin {
   AnimationController _controller;
-  Animation<double> animation, _animation;
+  Animation<double> animation,
+      _animation,
+      _animation1,
+      _animation2,
+      _animation3,
+      _animation4,
+      _animation5,
+      _animation6,
+      _animation7;
   @override
   void initState() {
     super.initState();
@@ -15,6 +23,22 @@ class _UIAnimState extends State<UIAnim> with SingleTickerProviderStateMixin {
         AnimationController(vsync: this, duration: Duration(seconds: 3));
     animation = new Tween(begin: -1.0, end: 0.0).animate(
         CurvedAnimation(parent: _controller, curve: Curves.bounceInOut));
+    _animation = new Tween(begin: -1.0, end: 0.0).animate(
+        CurvedAnimation(parent: _controller, curve: Curves.easeOutBack));
+    _animation1 = new Tween(begin: -1.0, end: 0.0).animate(
+        CurvedAnimation(parent: _controller, curve: Curves.easeOutBack));
+    _animation2 = new Tween(begin: -1.0, end: 0.0).animate(
+        CurvedAnimation(parent: _controller, curve: Curves.easeOutBack));
+    _animation3 = new Tween(begin: 1.0, end: 0.0).animate(
+        CurvedAnimation(parent: _controller, curve: Curves.easeOutBack));
+    _animation4 = new Tween(begin: 1.0, end: 0.0).animate(
+        CurvedAnimation(parent: _controller, curve: Curves.easeOutBack));
+    _animation5 = new Tween(begin: 1.0, end: 0.0).animate(
+        CurvedAnimation(parent: _controller, curve: Curves.easeOutBack));
+    _animation6 = new Tween(begin: 1.0, end: 0.0).animate(
+        CurvedAnimation(parent: _controller, curve: Curves.easeOutBack));
+    _animation7 = new Tween(begin: 1.0, end: 0.0).animate(
+        CurvedAnimation(parent: _controller, curve: Curves.easeOutBack));
   }
 
   @override
@@ -26,6 +50,7 @@ class _UIAnimState extends State<UIAnim> with SingleTickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
+    final height = MediaQuery.of(context).size.height;
     _controller.forward();
     return AnimatedBuilder(
       animation: _controller,
@@ -93,7 +118,9 @@ class _UIAnimState extends State<UIAnim> with SingleTickerProviderStateMixin {
                       children: [
                         Transform(
                           transform: Matrix4.translationValues(
-                              width * animation.value, 0, 0),
+                              width * _animation.value,
+                              height * _animation.value,
+                              0),
                           child: Container(
                             width: 120,
                             height: 120,
@@ -123,60 +150,70 @@ class _UIAnimState extends State<UIAnim> with SingleTickerProviderStateMixin {
                             ),
                           ),
                         ),
-                        Container(
-                          width: 120,
-                          height: 120,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(15),
-                            color: Colors.white,
-                          ),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Icon(
-                                Icons.book,
-                                size: 30,
-                                color: Colors.blue,
-                              ),
-                              SizedBox(
-                                height: 10,
-                              ),
-                              Text(
-                                'Writing',
-                                style: TextStyle(
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.black87),
-                              )
-                            ],
+                        Transform(
+                          transform: Matrix4.translationValues(
+                              0, height * _animation1.value, 0),
+                          child: Container(
+                            width: 120,
+                            height: 120,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(15),
+                              color: Colors.white,
+                            ),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Icon(
+                                  Icons.book,
+                                  size: 30,
+                                  color: Colors.blue,
+                                ),
+                                SizedBox(
+                                  height: 10,
+                                ),
+                                Text(
+                                  'Writing',
+                                  style: TextStyle(
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.black87),
+                                )
+                              ],
+                            ),
                           ),
                         ),
-                        Container(
-                          width: 120,
-                          height: 120,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(15),
-                            color: Colors.white,
-                          ),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Icon(
-                                Icons.speaker,
-                                size: 30,
-                                color: Colors.blue,
-                              ),
-                              SizedBox(
-                                height: 10,
-                              ),
-                              Text(
-                                'Listening',
-                                style: TextStyle(
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.black87),
-                              )
-                            ],
+                        Transform(
+                          transform: Matrix4.translationValues(
+                              _animation2.value * width,
+                              _animation2.value * height,
+                              0),
+                          child: Container(
+                            width: 120,
+                            height: 120,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(15),
+                              color: Colors.white,
+                            ),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Icon(
+                                  Icons.speaker,
+                                  size: 30,
+                                  color: Colors.blue,
+                                ),
+                                SizedBox(
+                                  height: 10,
+                                ),
+                                Text(
+                                  'Listening',
+                                  style: TextStyle(
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.black87),
+                                )
+                              ],
+                            ),
                           ),
                         ),
                       ],
@@ -187,88 +224,106 @@ class _UIAnimState extends State<UIAnim> with SingleTickerProviderStateMixin {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        Container(
-                          width: 120,
-                          height: 120,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(15),
-                            color: Colors.white,
-                          ),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Icon(
-                                Icons.speaker_notes,
-                                size: 30,
-                                color: Colors.blue,
-                              ),
-                              SizedBox(
-                                height: 10,
-                              ),
-                              Text(
-                                'Speaking',
-                                style: TextStyle(
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.black87),
-                              )
-                            ],
-                          ),
-                        ),
-                        Container(
-                          width: 120,
-                          height: 120,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(15),
-                            color: Colors.white,
-                          ),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Icon(
-                                Icons.fiber_new_sharp,
-                                size: 30,
-                                color: Colors.blue,
-                              ),
-                              SizedBox(
-                                height: 10,
-                              ),
-                              Text(
-                                'Matching',
-                                style: TextStyle(
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.black87),
-                              )
-                            ],
+                        Transform(
+                          transform: Matrix4.translationValues(
+                              _animation3.value * width,
+                              _animation3.value * height,
+                              0),
+                          child: Container(
+                            width: 120,
+                            height: 120,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(15),
+                              color: Colors.white,
+                            ),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Icon(
+                                  Icons.speaker_notes,
+                                  size: 30,
+                                  color: Colors.blue,
+                                ),
+                                SizedBox(
+                                  height: 10,
+                                ),
+                                Text(
+                                  'Speaking',
+                                  style: TextStyle(
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.black87),
+                                )
+                              ],
+                            ),
                           ),
                         ),
-                        Container(
-                          width: 120,
-                          height: 120,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(15),
-                            color: Colors.white,
+                        Transform(
+                          transform: Matrix4.translationValues(
+                              _animation4.value * width,
+                              _animation4.value * height,
+                              0),
+                          child: Container(
+                            width: 120,
+                            height: 120,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(15),
+                              color: Colors.white,
+                            ),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Icon(
+                                  Icons.fiber_new_sharp,
+                                  size: 30,
+                                  color: Colors.blue,
+                                ),
+                                SizedBox(
+                                  height: 10,
+                                ),
+                                Text(
+                                  'Matching',
+                                  style: TextStyle(
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.black87),
+                                )
+                              ],
+                            ),
                           ),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Icon(
-                                Icons.file_copy,
-                                size: 30,
-                                color: Colors.blue,
-                              ),
-                              SizedBox(
-                                height: 10,
-                              ),
-                              Text(
-                                'Test',
-                                style: TextStyle(
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.black87),
-                              )
-                            ],
+                        ),
+                        Transform(
+                          transform: Matrix4.translationValues(
+                              _animation5.value * width,
+                              _animation5.value * height,
+                              0),
+                          child: Container(
+                            width: 120,
+                            height: 120,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(15),
+                              color: Colors.white,
+                            ),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Icon(
+                                  Icons.file_copy,
+                                  size: 30,
+                                  color: Colors.blue,
+                                ),
+                                SizedBox(
+                                  height: 10,
+                                ),
+                                Text(
+                                  'Test',
+                                  style: TextStyle(
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.black87),
+                                )
+                              ],
+                            ),
                           ),
                         ),
                       ],
@@ -276,48 +331,52 @@ class _UIAnimState extends State<UIAnim> with SingleTickerProviderStateMixin {
                     SizedBox(
                       height: 30,
                     ),
-                    Column(
-                      children: [
-                        Container(
-                          width: 390,
-                          height: 110,
-                          decoration: BoxDecoration(
-                              gradient: LinearGradient(colors: [
-                                Colors.blue.shade200,
-                                Colors.pink.shade200
-                              ]),
-                              borderRadius: BorderRadius.circular(12)),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.only(left: 15.0),
-                                child: Text(
-                                  'Keep Improving !',
-                                  style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 25,
-                                      fontWeight: FontWeight.bold),
+                    Transform(
+                      transform: Matrix4.translationValues(
+                          _animation6.value * width, 0, 0),
+                      child: Column(
+                        children: [
+                          Container(
+                            width: 390,
+                            height: 110,
+                            decoration: BoxDecoration(
+                                gradient: LinearGradient(colors: [
+                                  Colors.blue.shade200,
+                                  Colors.pink.shade200
+                                ]),
+                                borderRadius: BorderRadius.circular(12)),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.only(left: 15.0),
+                                  child: Text(
+                                    'Keep Improving !',
+                                    style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 25,
+                                        fontWeight: FontWeight.bold),
+                                  ),
                                 ),
-                              ),
-                              SizedBox(
-                                height: 10,
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(left: 19.0),
-                                child: Text(
-                                  'Your current score',
-                                  style: TextStyle(
-                                      fontSize: 15,
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.bold),
+                                SizedBox(
+                                  height: 10,
                                 ),
-                              )
-                            ],
+                                Padding(
+                                  padding: const EdgeInsets.only(left: 19.0),
+                                  child: Text(
+                                    'Your current score',
+                                    style: TextStyle(
+                                        fontSize: 15,
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                )
+                              ],
+                            ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                     SizedBox(
                       height: 20,
@@ -338,48 +397,53 @@ class _UIAnimState extends State<UIAnim> with SingleTickerProviderStateMixin {
                     SizedBox(
                       height: 16,
                     ),
-                    Container(
-                      width: 380,
-                      height: 200,
-                      decoration: BoxDecoration(
-                          color: Colors.blueGrey.shade100,
-                          borderRadius: BorderRadius.circular(15)),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.only(left: 15.0, top: 25),
-                            child: Text(
-                              'Learned phases',
-                              style: TextStyle(
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.black87),
+                    Transform(
+                      transform: Matrix4.translationValues(
+                          _animation7.value * width, 0, 0),
+                      child: Container(
+                        width: 380,
+                        height: 200,
+                        decoration: BoxDecoration(
+                            color: Colors.blueGrey.shade100,
+                            borderRadius: BorderRadius.circular(15)),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Padding(
+                              padding:
+                                  const EdgeInsets.only(left: 15.0, top: 25),
+                              child: Text(
+                                'Learned phases',
+                                style: TextStyle(
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.black87),
+                              ),
                             ),
-                          ),
-                          SizedBox(height: 25),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 15.0),
-                            child: Text(
-                              'Phrases left to learn',
-                              style: TextStyle(
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.black87),
+                            SizedBox(height: 25),
+                            Padding(
+                              padding: const EdgeInsets.only(left: 15.0),
+                              child: Text(
+                                'Phrases left to learn',
+                                style: TextStyle(
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.black87),
+                              ),
                             ),
-                          ),
-                          SizedBox(height: 25),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 15.0),
-                            child: Text(
-                              'Total learning time',
-                              style: TextStyle(
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.black87),
-                            ),
-                          )
-                        ],
+                            SizedBox(height: 25),
+                            Padding(
+                              padding: const EdgeInsets.only(left: 15.0),
+                              child: Text(
+                                'Total learning time',
+                                style: TextStyle(
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.black87),
+                              ),
+                            )
+                          ],
+                        ),
                       ),
                     ),
                   ],
