@@ -11,7 +11,10 @@ class _UIAnimState extends State<UIAnim> with SingleTickerProviderStateMixin {
   @override
   void initState() {
     super.initState();
-    _controller = AnimationController(vsync: this);
+    _controller =
+        AnimationController(vsync: this, duration: Duration(seconds: 3));
+    animation = new Tween(begin: -1.0, end: 0.0).animate(
+        CurvedAnimation(parent: _controller, curve: Curves.bounceInOut));
   }
 
   @override
@@ -22,6 +25,8 @@ class _UIAnimState extends State<UIAnim> with SingleTickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
+    final width = MediaQuery.of(context).size.width;
+    _controller.forward();
     return AnimatedBuilder(
       animation: _controller,
       builder: (BuildContext context, Widget child) {
@@ -51,30 +56,34 @@ class _UIAnimState extends State<UIAnim> with SingleTickerProviderStateMixin {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    Container(
-                      child: Padding(
-                        padding: const EdgeInsets.only(left: 20),
-                        child: Text(
-                          'Job Interview',
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 20,
-                              color: Colors.black87),
+                    Transform(
+                      transform: Matrix4.translationValues(
+                          width * animation.value, 0, 0),
+                      child: Container(
+                        child: Padding(
+                          padding: const EdgeInsets.only(left: 20),
+                          child: Text(
+                            'Job Interview',
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 20,
+                                color: Colors.black87),
+                          ),
                         ),
+                        alignment: Alignment.centerLeft,
+                        width: 390,
+                        height: 60,
+                        decoration: BoxDecoration(
+                            shape: BoxShape.rectangle,
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.blue,
+                              ),
+                              BoxShadow(color: Colors.lightBlue.shade900)
+                            ],
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(20)),
                       ),
-                      alignment: Alignment.centerLeft,
-                      width: 390,
-                      height: 60,
-                      decoration: BoxDecoration(
-                          shape: BoxShape.rectangle,
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.blue,
-                            ),
-                            BoxShadow(color: Colors.lightBlue.shade900)
-                          ],
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(20)),
                     ),
                     SizedBox(
                       height: 20,
@@ -82,32 +91,36 @@ class _UIAnimState extends State<UIAnim> with SingleTickerProviderStateMixin {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        Container(
-                          width: 120,
-                          height: 120,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(15),
-                            color: Colors.white,
-                          ),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Icon(
-                                Icons.card_giftcard_sharp,
-                                size: 30,
-                                color: Colors.blue,
-                              ),
-                              SizedBox(
-                                height: 10,
-                              ),
-                              Text(
-                                'Flash Cards',
-                                style: TextStyle(
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.black87),
-                              )
-                            ],
+                        Transform(
+                          transform: Matrix4.translationValues(
+                              width * animation.value, 0, 0),
+                          child: Container(
+                            width: 120,
+                            height: 120,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(15),
+                              color: Colors.white,
+                            ),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Icon(
+                                  Icons.card_giftcard_sharp,
+                                  size: 30,
+                                  color: Colors.blue,
+                                ),
+                                SizedBox(
+                                  height: 10,
+                                ),
+                                Text(
+                                  'Flash Cards',
+                                  style: TextStyle(
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.black87),
+                                )
+                              ],
+                            ),
                           ),
                         ),
                         Container(
