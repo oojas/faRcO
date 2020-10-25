@@ -120,7 +120,7 @@ class _UIAnimState extends State<UIAnim> with SingleTickerProviderStateMixin {
                           transform: Matrix4.translationValues(
                               width * _animation.value,
                               height * _animation.value,
-                              0),
+                              height * _animation.value),
                           child: Container(
                             width: 120,
                             height: 120,
